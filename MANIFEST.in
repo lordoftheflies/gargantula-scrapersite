@@ -1,0 +1,17 @@
+include LICENSE
+include README.rst
+include requirements.txt
+recursive-include requirements *
+include scrapy.cfg
+include manage.py
+recursive-include mdm/static *
+recursive-include mdm/templates *
+recursive-include datastore/static *
+recursive-include datastore/templates *
+recursive-include reportsapp/static *
+recursive-include reportsapp/templates *
+recursive-include cubesviewer/static *
+recursive-include cubesviewer/templates *
+recursive-include botapp/static *
+recursive-include botapp/templates *
+recursive-include docs *

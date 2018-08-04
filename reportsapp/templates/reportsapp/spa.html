@@ -1,0 +1,20 @@
+{% extends 'material/frontend/base_module.html' %}
+{% load static %}
+{% block extrahead %}
+
+    <!--<meta charset="utf-8">-->
+    <!--<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">-->
+
+    <!--<title>reporting-frontend</title>-->
+    <!--<meta name="description" content="Single page application for managing report building.">-->
+<!---->
+    <!-- See https://goo.gl/OOhYW5 -->
+    <!--<link rel="manifest" href="/manifest.json">-->
+
+    <script src="{% static 'reportsapp/bower_components/webcomponentsjs/webcomponents-loader.js' %}"></script>
+
+    <link rel="import" href="{% static 'reportsapp/src/reporting-frontend-app/reporting-frontend-app.html' %}">
+{% endblock %}
+{% block content %}
+    <reporting-frontend-app></reporting-frontend-app>
+{% endblock %}

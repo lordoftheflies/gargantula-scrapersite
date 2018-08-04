@@ -1,0 +1,63 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/hot-table/hot-table.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<dom-module id="reporting-frontend-app">
+    <template>
+        <style>
+      :host {
+        display: block;
+      }
+
+        </style>
+
+        <iron-ajax url="/datastore/data/" last-response="{{itemsArray}}" auto></iron-ajax>
+
+        <paper-card heading="Best-offers">
+            <div class="card-content">
+                <hot-table datarows="{{ itemsArray }}" stetch-h="all" width="1200" height="600">
+                    <!--Primary columns-->
+                    <hot-column read-only fixed-rows-left="1" value="id" header="ID"></hot-column>
+                    <hot-column read-only type="date"  value="timestamp" header="Start date"></hot-column>
+                    <hot-column read-only value="duration" header="Duration"></hot-column>
+                    <hot-column read-only value="arrival_name" header="Arrival"></hot-column>
+                    <hot-column read-only value="departure_name" header="Departure"></hot-column>
+                    <hot-column read-only value="supplier_name" header="Supplier"></hot-column>
+                    <!--<hot-column value="lowest_price" header="Lowest price"></hot-column>-->
+                    <hot-column read-only value="bag_weight" header="Bag weight"></hot-column>
+                    <!--<hot-column value="bag_price" header="Bag price"></hot-column>-->
+                    <!--Secondary columns-->
+                    <hot-column read-only value="package_price" header="Package price"></hot-column>
+                    <hot-column read-only value="full_package_price" header="Package price with bag"></hot-column>
+                    <hot-column read-only value="flight_only_price" header="Flight only price"></hot-column>
+                    <hot-column read-only value="flight_price_with_bag" header="Flight only price with Bag"></hot-column>
+                    <hot-column read-only value="hotel_only_price" header="Hotel only price"></hot-column>
+                    <hot-column read-only value="bag_price_per_person" header="Bag price"></hot-column>
+                </hot-table>
+            </div>
+        </paper-card>
+
+    </template>
+
+    <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class ReportingFrontendApp extends Polymer.Element {
+      static get is() { return 'reporting-frontend-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'reporting-frontend-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ReportingFrontendApp.is, ReportingFrontendApp);
+
+    </script>
+</dom-module>

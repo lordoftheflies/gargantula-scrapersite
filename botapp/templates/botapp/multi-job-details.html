@@ -1,0 +1,128 @@
+{% extends 'material/frontend/views/detail.html' %}
+
+{% block page_title %}Bot jobs{% endblock page_title %}
+
+{% block breadcrumbs_items %}
+<a href="{% url 'botapp:portalmodel_list' %}">{{ model.meta.verbose_name_plural }}</a>
+<a href="{% url 'botapp:portalmodel_detail' object.pk %}">{{ object.portal.name }}</a>
+<a href="#" class="active">Job {{ object.scrapy_job }}</a>
+{% endblock breadcrumbs_items %}
+
+{% block content %}
+<div class="left-panel" style="flex-basis: 80%">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-title">Comparison job[{{ object.pk }}] children</div>
+            <!--<iframe style="width: 100%; height: -webkit-fill-available; border: none;"-->
+            <!--src="http://localhost:6800/logs/portalcrawler/angular/{{ object.scrapy_job }}.log">-->
+            <!--</iframe>-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>State</td>
+                    <td>Created</td>
+                </tr>
+                </thead>
+                {% for child_job in object.get_children %}
+                <tr class="">
+                    <td><a href="{% url 'botapp:bestofferjobmodel_detail' child_job.pk %}">{{ child_job.id }}</a></td>
+                    <td>{{ child_job.state }}</td>
+                    <td>{{ child_job.created }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+<div class="right-panel" style="flex-basis: 30%">
+    <div class="card">
+        <div class="card-content">
+
+            <div>{{ object.state }} job</div>
+            <div>ID {{ object.scrapy_job }} job</div>
+        </div>
+        <div class="card-action">
+            <div class="left">
+                <a href="#form_source" class="modal-trigger align-right blue-text">LUA Source</a>
+            </div>
+
+            <div class="right-align">
+                {% block actions_row %}
+                {% if True %}<a class="waves-effect waves-light btn green white-text" href="{% url 'botapp:comparisonmodel_scrapy_schedule' object.subject_portal.pk %}">Re-Run</a>{% endif %}
+                {% endblock actions_row %}
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Input</th>
+                </tr>
+                </thead>
+                <tr class="">
+                    <td>Date</td>
+                    <td>{{ object.data.timestamp }}</td>
+                </tr>
+                <tr class="">
+                    <td>Duration</td>
+                    <td>{{ object.data.duration }}</td>
+                </tr>
+                <tr class="">
+                    <td>Pax</td>
+                    <td>{{ object.data.pax }}</td>
+                </tr>
+                <tr class="">
+                    <td>Arrival</td>
+                    <td>{{ object.data.arrival }}</td>
+                </tr>
+                <tr class="">
+                    <td>Departure</td>
+                    <td>{{ object.data.departure }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Lowest price</th>
+                    <th>Bag price</th>
+                </tr>
+                </thead>
+                {% for child_job in object.get_children %}
+                <tr class="">
+                    <td>Job {{ child_job.id }}</td>
+                    <td>{{ child_job.data.lowest_price }}</td>
+                    <td>{{ child_job.data.bag_price }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div id="form_source" class="modal card">
+        <div class="modal-content">
+            <div class="section">
+                <h5>LUA source</h5>
+
+            </div>
+            <div class="divider"></div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn">Close</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $('.modal').modal();
+
+
+
+    </script>
+</div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{
+  "name": "reporting-frontend",
+  "short_name": "reporting-frontend",
+  "description": "Single page application for managing report building.",
+  "start_url": "/",
+  "display": "standalone"
+}

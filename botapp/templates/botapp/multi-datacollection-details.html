@@ -1,0 +1,50 @@
+{% extends 'material/frontend/base_module.html' %}
+{% load i18n material_frontend %}
+
+{% block breadcrumbs_items %}
+<a href="{% url 'botapp:comparisonmodel_detail' object.pk %}">{{ object.name }}</a>
+<a class="active">{% trans 'Set parameters' %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="left-panel" style="flex-basis: 100%">
+    <div class="card">
+        <form method="POST">{% csrf_token %}
+            <div class="card-content">
+                {{ form.as_p }}
+            </div>
+
+            <div class="card-action">
+                <div class="left">
+                    <a href="#form_source" class="modal-trigger align-right blue-text">LUA Source</a>
+                </div>
+
+                <div class="right-align">
+                    {% block actions_row %}
+                    {% if True %}<a class="waves-effect waves-light btn blue white-text" href="{% url 'botapp:portalmodel_detail' object.pk %}">{% trans 'Cancel' %}</a>{% endif %}
+                    {% if True %}
+                    <button type="submit" name="_submit" class="btn btn-primary btn-lg">{% trans 'Multi-schedule' %}</button>
+                    {% endif %}
+                    {% endblock actions_row %}
+                </div>
+            </div>
+        </form>
+
+        <div id="form_source" class="modal card">
+            <div class="modal-content">
+                <div class="section">
+                    <h5>LUA source</h5>
+                    <pre><code class="python">{{ object.subject.lua_script_for_execute|linebreaksbr }}</code></pre>
+                </div>
+                <div class="divider"></div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn">Close</a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript"> $('.modal').modal(); </script>
+    </div>
+
+</div>
+
+{% endblock %}

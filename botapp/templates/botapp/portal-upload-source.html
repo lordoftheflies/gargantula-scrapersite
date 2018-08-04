@@ -1,0 +1,36 @@
+{% extends 'material/frontend/base_module.html' %}
+{% load i18n material_frontend %}
+
+{% block breadcrumbs_items %}
+<a href="{% url 'botapp:portalmodel_list' %}">{{ model.meta.verbose_name_plural }}</a>
+<a href="{% url 'botapp:portalmodel_detail' object.pk %}">{{ object.name }}</a>
+<a class="active">{% trans 'Upload LUA source' %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="left-panel" style="flex-basis: 80%">
+
+
+    <div class="card">
+        <form method="POST" enctype="multipart/form-data" class="viewform">
+            {% csrf_token %}
+            <div class="card-content">
+                <div class="card-title">{% trans 'Upload LUA source to ' %} "{{ object.name }}"</div>
+                {{ form }}
+            </div>
+            <div class="card-action right-align">
+                {% block actions_row %}
+                {% if True %}<a class="waves-effect waves-light btn blue white-text" href="{% url 'botapp:portalmodel_detail' object.pk %}">{% trans 'Cancel' %}</a>{% endif %}
+                {% if True %}
+                <button type="submit" name="_submit" class="btn btn-primary btn-lg">{% trans 'Upload' %}</button>
+                {% endif %}
+                {% endblock actions_row %}
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
+
+

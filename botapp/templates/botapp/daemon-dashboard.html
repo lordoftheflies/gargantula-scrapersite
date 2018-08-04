@@ -1,0 +1,21 @@
+{% extends './base_module.html' %}
+
+{% block content %}
+<div class="left-panel" style="flex-basis: 80%">
+    {% for project in projects %}
+    <div class="card">
+        <div class="card-content">
+            {{ project.name }}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+<div class="right-panel" style="flex-basis: 20%">
+    <div class="card">
+        <div class="card-content">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

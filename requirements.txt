@@ -1,0 +1,15 @@
+python-dotenv
+requests
+radar
+Django
+dj-database-url
+django-configurations
+django-debug-toolbar
+django-extensions
+django-cors-headers
+djangorestframework
+redis
+celery
+psycopg2
+python-scrapyd-api
+bumpversion
