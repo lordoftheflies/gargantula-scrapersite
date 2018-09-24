@@ -30,8 +30,8 @@ pipeline {
 
         stage('Setup dotenv') {
             steps {
+                copy(srcFile: "env.template", dstFile="${DOTENV_PATH}")
                 sh '''if [ ! -f "${DOTENV_PATH}" ]; then
-                    cp env.template "${DOTENV_PATH}"
                     sed -i -- 's/DEVELOPMENT/STAGING/g' ${DOTENV_PATH}
                 fi'''
             }
