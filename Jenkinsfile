@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        REPOSITORY_NAME = 'scrapersite'
-        PYTHON_MODULE_NAME = 'gargantula_scrapersite'
+        REPOSITORY_NAME = 'gargantula-scrapersite'
+        PYTHON_MODULE_NAME = 'scrapersite'
         PYTHON_PATH = '/usr/bin/python3.6'
         VIRTUAL_ENVIRONMENT_NAME = 'env'
         PYPI_EXTRA_INDEX_URL = 'https://pypi.cherubits.hu'
         PYPI_REPOSITORY = 'local'
+        DOTENV_PATH = '~/.gargantula'
     }
 
     stages {
@@ -27,7 +28,14 @@ pipeline {
             }
         }
 
-
+        stage('Setup dotenv') {
+            steps {
+                sh '''if [ ! -f "${DOTENV_PATH}" ]; then
+                    cp env.template ${DOTENV_PATH}
+                    sed -i -- 's/DEVELOPMENT/STAGING/g' ${DOTENV_PATH}
+                fi'''
+            }
+        }
 
         stage('Setup') {
             steps {

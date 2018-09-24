@@ -1,0 +1,6 @@
+id,code,display_name,description
+1,"SINGLE","Single","Room for single person."
+2,"DOUBLE","Double","Room with two beds."
+3,"AP","Apartman",""
+4,"ST","Studio",""
+

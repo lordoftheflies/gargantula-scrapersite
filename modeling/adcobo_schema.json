@@ -1,0 +1,697 @@
+{
+  "processes": [
+    {
+      "active": true,
+      "arguments": [
+        {
+          "data_type": "enumeration_supplier",
+          "default_value": "1",
+          "description": "Sample supplier agument.",
+          "friendly_name": "Sample supplier",
+          "id": 17,
+          "slug": "sample_supplier",
+          "tag": "supplier"
+        },
+        {
+          "data_type": "enumeration_roomtype",
+          "default_value": "1",
+          "description": "Sample room-type argument.",
+          "friendly_name": "Sample room-type",
+          "id": 16,
+          "slug": "sample_roomtype",
+          "tag": "roomtype"
+        },
+        {
+          "data_type": "enumeration_market",
+          "default_value": "1",
+          "description": "Sample market argument.",
+          "friendly_name": "Sample market",
+          "id": 15,
+          "slug": "sample_market",
+          "tag": "market"
+        },
+        {
+          "data_type": "enumeration_flightprovider",
+          "default_value": "1",
+          "description": "Sample flight-provider argument.",
+          "friendly_name": "Sample flight-provider",
+          "id": 14,
+          "slug": "sample_flightprovider",
+          "tag": "flightprovider"
+        },
+        {
+          "data_type": "enumeration_hotel",
+          "default_value": "1",
+          "description": "Sample flight-provider argument.",
+          "friendly_name": "Sample hotel",
+          "id": 13,
+          "slug": "sample_hotel",
+          "tag": "hotel"
+        },
+        {
+          "data_type": "enumeration_bagtype",
+          "default_value": "1",
+          "description": "Sample bag-type argument.",
+          "friendly_name": "Sample bag-type",
+          "id": 12,
+          "slug": "sample_bagtype",
+          "tag": "bagtype"
+        },
+        {
+          "data_type": "enumeration_airport",
+          "default_value": "1",
+          "description": "Sample airport argument.",
+          "friendly_name": "Sample airport",
+          "id": 11,
+          "slug": "sample_airport",
+          "tag": "airport"
+        },
+        {
+          "data_type": "boolean",
+          "default_value": "false",
+          "description": "Sample boolean argument.",
+          "friendly_name": "Sample boolean",
+          "id": 10,
+          "slug": "sample_boolean",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": "2019-02-01T12:00:00Z",
+          "description": "Sample date argument.",
+          "friendly_name": "Sample date",
+          "id": 9,
+          "slug": "sample_date",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": "123",
+          "description": "Sample number argument.",
+          "friendly_name": "Sample number",
+          "id": 8,
+          "slug": "sample_number",
+          "tag": null
+        },
+        {
+          "data_type": "text",
+          "default_value": "data",
+          "description": "Sample text argument.",
+          "friendly_name": "Sample text",
+          "id": 7,
+          "slug": "sample_text",
+          "tag": null
+        }
+      ],
+      "description": "Sample process for scraping data to provide samples of usage.\r\n\r\nFurther information: https://github.com/lordoftheflies/gargantula/wiki/Sample-project",
+      "friendly_name": "Sample",
+      "id": 1,
+      "notebook": "/home/lordoftheflies/Documents/theoutsourcepro/gargantula/scrapersite/../notebooks/bestoffer_easyjet.ipynb",
+      "parameters": {
+        "sample_airport": "1",
+        "sample_bagtype": "1",
+        "sample_boolean": "false",
+        "sample_date": "2019-02-01T12:00:00Z",
+        "sample_flightprovider": "1",
+        "sample_hotel": "1",
+        "sample_market": "1",
+        "sample_number": "123",
+        "sample_roomtype": "1",
+        "sample_supplier": "1",
+        "sample_text": "data"
+      },
+      "slug": "sample",
+      "schema": [
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price of the journey from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price for baggage from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "bag_price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual departure date.",
+          "friendly_name": "Departure date",
+          "slug": "final_departure_date",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual arrival date.",
+          "friendly_name": "ArrivalDeparture date",
+          "slug": "final_arrival_date",
+          "tag": null
+        }
+      ]
+    },
+    {
+      "active": true,
+      "arguments": [],
+      "description": "Best-offers from RyanAir webportal.",
+      "friendly_name": "RyanAir best-offer",
+      "id": 2,
+      "notebook": "/home/lordoftheflies/Documents/theoutsourcepro/gargantula/scrapersite/../notebooks/bestoffer_ryanair.ipynb",
+      "parameters": {},
+      "slug": "bestoffer_ryanair",
+      "schema": [
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price of the journey from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price for baggage from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "bag_price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual departure date.",
+          "friendly_name": "Departure date",
+          "slug": "final_departure_date",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual arrival date.",
+          "friendly_name": "ArrivalDeparture date",
+          "slug": "final_arrival_date",
+          "tag": null
+        }
+      ]
+    },
+    {
+      "active": true,
+      "arguments": [
+        {
+          "data_type": "text",
+          "default_value": null,
+          "description": "Destination cit.",
+          "friendly_name": "Destination",
+          "slug": "destination_city",
+          "tag": null
+        },
+        {
+          "data_type": "enumeration_airport",
+          "default_value": null,
+          "description": "Departure airport or city.",
+          "friendly_name": "Departure",
+          "slug": "departure_location",
+          "tag": "airport"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Earliest day before journey.",
+          "friendly_name": "Departure from",
+          "slug": "departure_from",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": null,
+          "description": "Duration in nights.",
+          "friendly_name": "Nights",
+          "slug": "nights",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": null,
+          "description": "Count of party.",
+          "friendly_name": "Party",
+          "slug": "party",
+          "tag": null
+        }
+      ],
+      "description": "Best-offers from On the Beach webportal.",
+      "friendly_name": "On the Beach best-offer",
+      "id": 3,
+      "notebook": "/home/lordoftheflies/Documents/theoutsourcepro/gargantula/scrapersite/../notebooks/bestoffer_onthebeach.ipynb",
+      "parameters": {},
+      "slug": "bestoffer_onthebeach",
+      "schema": [
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price of the journey from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price for baggage from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "bag_price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual departure date.",
+          "friendly_name": "Departure date",
+          "slug": "final_departure_date",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual arrival date.",
+          "friendly_name": "ArrivalDeparture date",
+          "slug": "final_arrival_date",
+          "tag": null
+        }
+      ]
+    },
+    {
+      "active": true,
+      "arguments": [
+        {
+          "data_type": "text",
+          "default_value": null,
+          "description": "Origin city.",
+          "friendly_name": "Origin",
+          "slug": "origin",
+          "tag": null
+        },
+        {
+          "data_type": "text",
+          "default_value": null,
+          "description": "Destination city.",
+          "friendly_name": "Destination",
+          "slug": "destination",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Earliest day before journey.",
+          "friendly_name": "Departing",
+          "slug": "departing",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Latest day after journey.",
+          "friendly_name": "Returning",
+          "slug": "returning",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": null,
+          "description": "Count of adults.",
+          "friendly_name": "Adults",
+          "slug": "adults",
+          "tag": null
+        }
+      ],
+      "description": "Best-offers from Expedia webportal.",
+      "friendly_name": "Expedia best-offer",
+      "id": 4,
+      "notebook": "/home/lordoftheflies/Documents/theoutsourcepro/gargantula/scrapersite/../notebooks/bestoffer_expedia.ipynb",
+      "parameters": {},
+      "slug": "bestoffer_expedia",
+      "schema": [
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price of the journey from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price for baggage from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "bag_price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual departure date.",
+          "friendly_name": "Departure date",
+          "slug": "final_departure_date",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual arrival date.",
+          "friendly_name": "ArrivalDeparture date",
+          "slug": "final_arrival_date",
+          "tag": null
+        }
+      ]
+    },
+    {
+      "active": true,
+      "arguments": [
+        {
+          "data_type": "enumeration_hotel",
+          "default_value": null,
+          "description": "Destination hotel.",
+          "friendly_name": "Destination",
+          "slug": "destination_location",
+          "tag": "airport"
+        },
+        {
+          "data_type": "enumeration_airport",
+          "default_value": null,
+          "description": "Departure airport or city.",
+          "friendly_name": "Departure",
+          "slug": "departure_location",
+          "tag": "airport"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Earliest day before journey.",
+          "friendly_name": "Departure from",
+          "slug": "departure_from",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": null,
+          "description": "Duration in days.",
+          "friendly_name": "Duration",
+          "slug": "duration",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": null,
+          "description": "Count of adults.",
+          "friendly_name": "Adults",
+          "slug": "adults",
+          "tag": null
+        }
+      ],
+      "description": "Best-offers from Love Holidays webportal.",
+      "friendly_name": "Love Holidays best-offer",
+      "id": 5,
+      "notebook": "/home/lordoftheflies/Documents/theoutsourcepro/gargantula/scrapersite/../notebooks/bestoffer_loveholidays.ipynb",
+      "parameters": {},
+      "slug": "bestoffer_loveholidays",
+      "schema": [
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price of the journey from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price for baggage from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "bag_price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual departure date.",
+          "friendly_name": "Departure date",
+          "slug": "final_departure_date",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual arrival date.",
+          "friendly_name": "ArrivalDeparture date",
+          "slug": "final_arrival_date",
+          "tag": null
+        }
+      ]
+    },
+    {
+      "active": true,
+      "arguments": [
+        {
+          "data_type": "text",
+          "default_value": null,
+          "description": "Destination city.",
+          "friendly_name": "Where to",
+          "slug": "where_to",
+          "tag": null
+        },
+        {
+          "data_type": "enumeration_airport",
+          "default_value": null,
+          "description": "Departure airport or city.",
+          "friendly_name": "Fling from",
+          "slug": "flying_from",
+          "tag": "airport"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Earliest day before journey.",
+          "friendly_name": "When",
+          "slug": "when",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": null,
+          "description": "Count of adults.",
+          "friendly_name": "Who is going",
+          "slug": "who_is_going",
+          "tag": null
+        }
+      ],
+      "description": "Best-offers from Travel Republic webportal.",
+      "friendly_name": "Travel Republic best-offer",
+      "id": 6,
+      "notebook": "/home/lordoftheflies/Documents/theoutsourcepro/gargantula/scrapersite/../notebooks/bestoffer_travelrepublic.ipynb",
+      "parameters": {},
+      "slug": "bestoffer_travelrepublic",
+      "schema": [
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price of the journey from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price for baggage from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "bag_price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual departure date.",
+          "friendly_name": "Departure date",
+          "slug": "final_departure_date",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual arrival date.",
+          "friendly_name": "ArrivalDeparture date",
+          "slug": "final_arrival_date",
+          "tag": null
+        }
+      ]
+    },
+    {
+      "active": true,
+      "arguments": [
+        {
+          "data_type": "enumeration_airport",
+          "default_value": null,
+          "description": "Departure airport or city.",
+          "friendly_name": "Departure",
+          "slug": "departure_location",
+          "tag": "airport"
+        },
+        {
+          "data_type": "text",
+          "default_value": null,
+          "description": "Destination city.",
+          "friendly_name": "Destination",
+          "slug": "destination",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Earliest day before journey.",
+          "friendly_name": "Departure from",
+          "slug": "departure_from",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Latest day after journey.",
+          "friendly_name": "Arrive to",
+          "slug": "arrive_to",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": null,
+          "description": "Count of reserved rooms.",
+          "friendly_name": "Rooms",
+          "slug": "rooms",
+          "tag": null
+        },
+        {
+          "data_type": "number",
+          "default_value": null,
+          "description": "Count of persons.",
+          "friendly_name": "People",
+          "slug": "people",
+          "tag": null
+        },
+        {
+          "data_type": "enumeration_bagtype",
+          "default_value": null,
+          "description": "Weight of bag.",
+          "friendly_name": "Bag",
+          "slug": "bag",
+          "tag": null
+        }
+      ],
+      "description": "Best-offers from EasyJet webportal.",
+      "friendly_name": "EasyJet best-offer",
+      "id": 7,
+      "notebook": "/home/lordoftheflies/Documents/theoutsourcepro/gargantula/scrapersite/../notebooks/bestoffer_easyjet.ipynb",
+      "parameters": {},
+      "slug": "bestoffer_easyjet",
+      "schema": [
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price of the journey from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price for baggage from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "bag_price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual departure date.",
+          "friendly_name": "Departure date",
+          "slug": "final_departure_date",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual arrival date.",
+          "friendly_name": "ArrivalDeparture date",
+          "slug": "final_arrival_date",
+          "tag": null
+        }
+      ]
+    },
+    {
+      "active": true,
+      "arguments": [],
+      "description": "Best-offers from Jet2holidays webportal.",
+      "friendly_name": "Jet2holidays best-offer",
+      "id": 8,
+      "notebook": "/home/lordoftheflies/Documents/theoutsourcepro/gargantula/scrapersite/../notebooks/bestoffer_jet2holidays.ipynb",
+      "parameters": {},
+      "slug": "bestoffer_jet2holidays",
+      "schema": [
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price of the journey from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "currency",
+          "default_value": null,
+          "description": "Best offer price for baggage from the current supplier.",
+          "friendly_name": "Price",
+          "slug": "bag_price",
+          "tag": null,
+          "unit": "GBP"
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual departure date.",
+          "friendly_name": "Departure date",
+          "slug": "final_departure_date",
+          "tag": null
+        },
+        {
+          "data_type": "date",
+          "default_value": null,
+          "description": "Actual arrival date.",
+          "friendly_name": "ArrivalDeparture date",
+          "slug": "final_arrival_date",
+          "tag": null
+        }
+      ]
+    }
+  ]
+}

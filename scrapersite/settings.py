@@ -404,7 +404,7 @@ class Common(Configuration):
         'PAGE_SIZE': 100,
     }
 
-    NOTEBOOKS_ROOT = os.path.join(BASE_DIR, '..', 'notebooks')
+    NOTEBOOKS_ROOT = os.path.join(BASE_DIR, 'notebooks')
 
     # @classmethod
     # def post_setup(cls):

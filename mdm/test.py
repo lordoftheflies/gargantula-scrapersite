@@ -9,42 +9,42 @@ class CommandsTestCase(TestCase):
     def test_import_airport(self):
         " Test import_airport command."
 
-        args = ['../modeling/airports.csv']
+        args = ['modeling/airports.csv']
         opts = {}
         call_command('import_airport', *args, **opts)
 
     def test_import_board(self):
         " Test import_board command."
 
-        args = ['../modeling/boards.csv']
+        args = ['modeling/boards.csv']
         opts = {}
         call_command('import_board', *args, **opts)
 
     def test_import_hotel(self):
         " Test import_hotel command."
 
-        args = ['../modeling/hotels.csv']
+        args = ['modeling/hotels.csv']
         opts = {}
         call_command('import_hotel', *args, **opts)
 
     def test_import_market(self):
         " Test import_market command."
 
-        args = ['../modeling/markets.csv']
+        args = ['modeling/markets.csv']
         opts = {}
         call_command('import_market', *args, **opts)
 
     def test_import_roomtype(self):
         " Test import_roomtype command."
 
-        args = ['../modeling/roomtypes.csv']
+        args = ['modeling/roomtypes.csv']
         opts = {}
         call_command('import_roomtype', *args, **opts)
 
     def test_import_supplier(self):
         " Test import_supplier command."
 
-        args = ['../modeling/suppliers.csv']
+        args = ['modeling/suppliers.csv']
         opts = {}
         call_command('import_supplier', *args, **opts)
 

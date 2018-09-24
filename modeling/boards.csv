@@ -1,0 +1,8 @@
+id,code,display_name,description
+1,"HB","Half-board","Meal basis is half-board."
+2,"AI","All-inlcusive","Meal basis is all paid."
+3,"RO","Room only","Reserve room, but n meal."
+4,"BB","Bed and breakfast","Only breakfast."
+5,"FB","Full-board","Full board with three meal."
+6,"SC","Self-catering","Room only apartman."
+

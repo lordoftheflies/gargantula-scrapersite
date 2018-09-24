@@ -1,0 +1,42 @@
+{
+  "enumerations": [
+    {
+      "airports": {
+        "name": "airports",
+        "modelclassname": "mdm.models.Airports"
+      }
+    }
+  ],
+  "property_definitions": [
+    {
+      "name": "start_date",
+      "display_name": "Start date",
+      "description": "Date of the departure",
+      "type": "date"
+    },
+    {
+      "name": "duration",
+      "display_name": "Duration",
+      "description": "Duration of travel in days",
+      "type": "numeric"
+    },
+    {
+      "name": "pax",
+      "display_name": "Pax",
+      "description": "Number of passangers",
+      "type": "numeric"
+    },
+    {
+      "name": "departure_airport",
+      "display_name": "Departure airport",
+      "description": "Airport of the departure",
+      "type": "airports"
+    },
+    {
+      "name": "arrival_airport",
+      "display_name": "Arrival airport",
+      "description": "Airport of the arrival",
+      "type": "airports"
+    }
+  ]
+}

@@ -77,10 +77,10 @@ class PublisherMixin(object):
     Channel layer client mixin.
     """
 
-    def __init__(self, prefix):
+    def __init__(self, prefix, channel_layer = None):
         super().__init__()
 
-        self.channel_layer = get_channel_layer()
+        self.channel_layer = get_channel_layer() if channel_layer is None else channel_layer
         self.prefix = prefix
 
     @property
@@ -398,7 +398,11 @@ def scrapy_observer(self: SplashScrapyJobTask, scrapy_job_id, process_id, execut
         bubbles=False
     )
 
-    while state != FINISHED:
+    round_based = 'rounds' in kwargs
+    if round_based:
+        rounds = kwargs['rounds']
+
+    while state != FINISHED or rounds > 0:
         # while True:
         try:
             state = self.scrapy_poll_job_state(scrapy_job_id=scrapy_job_id)
@@ -428,6 +432,9 @@ def scrapy_observer(self: SplashScrapyJobTask, scrapy_job_id, process_id, execut
                 job=scrapy_job_id,
                 state=state,
             )
+
+            if round_based is not None:
+                rounds -= 1
 
 
 @shared_task(base=JobTask, bind=True, ignore_result=True, serializer='json', track_started=True)

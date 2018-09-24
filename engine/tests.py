@@ -1,4 +1,5 @@
 from datetime import datetime
+from unittest import mock
 
 import pytest
 from django.test import TestCase
@@ -11,14 +12,14 @@ class CommandsTestCase(TestCase):
     def test_schema_export(self):
         " Test schema_export command."
 
-        args = ['../modeling/schema.json']
+        args = ['modeling/schema.json']
         opts = {}
         call_command('schema_export', *args, **opts)
 
     def test_schema_import(self):
         " Test schema_import command."
 
-        args = ['../modeling/schema.json']
+        args = ['modeling/schema.json']
         opts = {}
         call_command('schema_import', *args, **opts)
 
@@ -70,11 +71,21 @@ class CommandsTestCase(TestCase):
 #         )
 #
 #
+class DummyChannelsClient:
+
+    async def group_send(self, *args, **kwargs):
+        return None
+
+
+def mock_get_channel_layer():
+    return DummyChannelsClient()
+
+
 @pytest.mark.celery(result_backend='redis://')
 class TasksTestCase(TestCase):
 
-
     def setUp(self):
+
         self.process = models.ProcessModel.objects.create(
             slug='bot',
             friendly_name='test-display-name',
@@ -100,9 +111,11 @@ class TasksTestCase(TestCase):
 
     def test_scrapy_observer(self):
         """ Test observe scrapy job """
-        response = tasks.scrapy_observer(
-            scrapy_job_id='bot',
-            process_id=self.process.id,
-            execution_id=self.execution.id,
-        )
-        self.assertEqual(response, None)
+        with mock.patch('channels.layers.get_channel_layer  ', mock_get_channel_layer):
+            response = tasks.scrapy_observer(
+                scrapy_job_id='bot',
+                process_id=self.process.id,
+                execution_id=self.execution.id,
+                rounds=2
+            )
+            self.assertEqual(response, None)
