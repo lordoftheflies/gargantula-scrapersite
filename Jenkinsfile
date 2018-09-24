@@ -8,7 +8,7 @@ pipeline {
         VIRTUAL_ENVIRONMENT_NAME = 'env'
         PYPI_EXTRA_INDEX_URL = 'https://pypi.cherubits.hu'
         PYPI_REPOSITORY = 'local'
-        DOTENV_PATH = ~/.gargantula
+        DOTENV_PATH = '~/.gargantula'
     }
 
     stages {
@@ -31,7 +31,7 @@ pipeline {
         stage('Setup dotenv') {
             steps {
                 sh '''if [ ! -f "${DOTENV_PATH}" ]; then
-                    cp env.template ${DOTENV_PATH}
+                    cp env.template "${DOTENV_PATH}"
                     sed -i -- 's/DEVELOPMENT/STAGING/g' ${DOTENV_PATH}
                 fi'''
             }
