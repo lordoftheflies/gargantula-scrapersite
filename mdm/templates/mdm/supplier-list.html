@@ -1,0 +1,38 @@
+{% extends 'material/frontend/views/list.html' %}
+{% load i18n material_form material_frontend %}
+
+
+{% block left-panel %}
+<div class="left-panel">
+    <div class="card list-card">
+        <div class="card-content">
+            <table id="table" class="table bordered" data-form-control="datatable" style="width:100%">
+                <thead>
+                    <tr>
+                        {% for header, header_title in headers %}
+                        <th data-name="{{ header }}" class="{{ header }}">{{ header_title|title }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item, row in data %}
+                    <tr>
+                        {% for column_name, item in row.items %}
+                        <td>
+                            {% if column_name in view.datalist.list_display_links %}
+                            <a href="#">{{ item }}</a>
+                            {% elif column_name == 'portal' %}
+                            <a target="_blank" href="{{ item }}">{{ item }}</a>
+                            {% else %}
+                            {{ item }}
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock left-panel %}

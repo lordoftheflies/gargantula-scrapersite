@@ -1,0 +1,1 @@
+from scrapersite.version import __version__

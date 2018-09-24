@@ -1,0 +1,17 @@
+spider,name,version,portal_url,action_type,id,display_name,order_index,id
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,6,Érkezési repülőtér kiválasztása,6.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,8,Visszaút kiválasztása,8.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,12,"Vissza ""összegtől"" gomb megnyomása",12.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,3,Indulási repülőtér kiválasztása,3.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,10,"Oda ""összegtől"" gomb megnyomása",10.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,1,Indulási állomás felugró megnyitása,1.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,2,Indulási ország kiválasztása,2.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,11,Oda normál viteldíj beállítása,11.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,4,Érkezési állomás felugró megnyitása,4.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,5,Érkezési ország kiválasztása,5.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,13,Folytatás gombra kattintés,13.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,7,Indulási időpont kiválasztása,7.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,9,Indulásra kattintás,9.0,1
+angular,RyanAir Holidays,3.10.53,https://www.ryanair.com/hu/hu/,1,98,Összeg mentése,14.0,1
+TOTALS,,,,,,,,
+14,,,,14,,,105.0,
