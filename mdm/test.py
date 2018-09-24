@@ -1,7 +1,9 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from configurations.management import call_command
 from django.urls import include, path, reverse
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase, URLPatternsTestCase
 
 
@@ -48,8 +50,14 @@ class CommandsTestCase(TestCase):
         opts = {}
         call_command('import_supplier', *args, **opts)
 
+class RestApiTest(APITestCase, URLPatternsTestCase):
 
-class AirportRestApiTests(APITestCase, URLPatternsTestCase):
+    def setUp(self):
+        user = User.objects.create(username='testuser', is_staff = True, is_active = True, is_superuser = True, email='test@a.v')
+        self.client.force_authenticate(user=user)
+
+
+class AirportRestApiTests(RestApiTest):
     urlpatterns = [
         path('mdm/', include('mdm.urls')),
     ]
@@ -62,10 +70,10 @@ class AirportRestApiTests(APITestCase, URLPatternsTestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data), 4)
 
 
-class BagTypeRestApiTests(APITestCase, URLPatternsTestCase):
+class BagTypeRestApiTests(RestApiTest):
     urlpatterns = [
         path('mdm/', include('mdm.urls')),
     ]
@@ -78,10 +86,10 @@ class BagTypeRestApiTests(APITestCase, URLPatternsTestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data), 4)
 
 
-class BoardRestApiTests(APITestCase, URLPatternsTestCase):
+class BoardRestApiTests(RestApiTest):
     urlpatterns = [
         path('mdm/', include('mdm.urls')),
     ]
@@ -94,10 +102,10 @@ class BoardRestApiTests(APITestCase, URLPatternsTestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data), 4)
 
 
-class FlightProviderRestApiTests(APITestCase, URLPatternsTestCase):
+class FlightProviderRestApiTests(RestApiTest):
     urlpatterns = [
         path('mdm/', include('mdm.urls')),
     ]
@@ -110,10 +118,10 @@ class FlightProviderRestApiTests(APITestCase, URLPatternsTestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data), 4)
 
 
-class HotelRestApiTests(APITestCase, URLPatternsTestCase):
+class HotelRestApiTests(RestApiTest):
     urlpatterns = [
         path('mdm/', include('mdm.urls')),
     ]
@@ -126,10 +134,10 @@ class HotelRestApiTests(APITestCase, URLPatternsTestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data), 4)
 
 
-class MarketRestApiTests(APITestCase, URLPatternsTestCase):
+class MarketRestApiTests(RestApiTest):
     urlpatterns = [
         path('mdm/', include('mdm.urls')),
     ]
@@ -142,10 +150,10 @@ class MarketRestApiTests(APITestCase, URLPatternsTestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data), 4)
 
 
-class RoomTypeRestApiTests(APITestCase, URLPatternsTestCase):
+class RoomTypeRestApiTests(RestApiTest):
     urlpatterns = [
         path('mdm/', include('mdm.urls')),
     ]
@@ -158,10 +166,10 @@ class RoomTypeRestApiTests(APITestCase, URLPatternsTestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data), 4)
 
 
-class SupplierRestApiTests(APITestCase, URLPatternsTestCase):
+class SupplierRestApiTests(RestApiTest):
     urlpatterns = [
         path('mdm/', include('mdm.urls')),
     ]
@@ -174,4 +182,4 @@ class SupplierRestApiTests(APITestCase, URLPatternsTestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data), 4)

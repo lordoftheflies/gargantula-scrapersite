@@ -41,14 +41,10 @@ def task_prerun_handler(sender=None, headers=None, body=None, **kwargs):
 
 
 class ScrapyDaemonClientMixin(object):
-    SCRAPY_PROJECT = settings.SCRAPY_PROJECT
-    SCRAPY_SPIDER = settings.SCRAPY_SPIDER
 
-    def __init__(self):
-        super().__init__()
-
-        logger.warning('Connect to Scrapy Daemon: %s' % settings.SCRAPYD_URL)
-        self._scrapyd = ScrapydAPI(settings.SCRAPYD_URL, endpoints={
+    @staticmethod
+    def get_scrapy_daemon_client():
+        return ScrapydAPI(settings.SCRAPYD_URL, endpoints={
             ADD_VERSION_ENDPOINT: '%s/addversion.json' % settings.SCRAPYD_PREFIX,
             CANCEL_ENDPOINT: '%s/cancel.json' % settings.SCRAPYD_PREFIX,
             DELETE_PROJECT_ENDPOINT: '%s/delproject.json' % settings.SCRAPYD_PREFIX,
@@ -59,6 +55,15 @@ class ScrapyDaemonClientMixin(object):
             LIST_VERSIONS_ENDPOINT: '%s/listversions.json' % settings.SCRAPYD_PREFIX,
             SCHEDULE_ENDPOINT: '%s/schedule.json' % settings.SCRAPYD_PREFIX,
         })
+
+    SCRAPY_PROJECT = settings.SCRAPY_PROJECT
+    SCRAPY_SPIDER = settings.SCRAPY_SPIDER
+
+    def __init__(self):
+        super().__init__()
+
+        logger.warning('Connect to Scrapy Daemon: %s' % settings.SCRAPYD_URL)
+        self._scrapyd = ScrapyDaemonClientMixin.get_scrapy_daemon_client()
 
     @property
     def scrapyd(self) -> ScrapydAPI:
@@ -390,6 +395,8 @@ def scrapy_observer(self: SplashScrapyJobTask, scrapy_job_id, process_id, execut
         self.execution.configure(**self.process.parameters)
 
     self.execution.start()
+
+
     self.publish_state(
         message='Started',
         progress=1,
@@ -399,10 +406,10 @@ def scrapy_observer(self: SplashScrapyJobTask, scrapy_job_id, process_id, execut
     )
 
     round_based = 'rounds' in kwargs
-    if round_based:
-        rounds = kwargs['rounds']
+    rounds = kwargs['rounds'] if round_based else 0
 
     while state != FINISHED or rounds > 0:
+        print('-----------------')
         # while True:
         try:
             state = self.scrapy_poll_job_state(scrapy_job_id=scrapy_job_id)

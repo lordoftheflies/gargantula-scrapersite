@@ -4,7 +4,10 @@ from unittest import mock
 import pytest
 from django.test import TestCase
 from configurations.management import call_command
+from scrapyd_api import FINISHED
+
 from engine import tasks
+from engine.tasks import ScrapyDaemonClientMixin
 from engine import models
 
 
@@ -73,12 +76,20 @@ class CommandsTestCase(TestCase):
 #
 class DummyChannelsClient:
 
+    def __init__(self):
+        print('Mock channel-layer')
+
     async def group_send(self, *args, **kwargs):
         return None
 
 
-def mock_get_channel_layer():
-    return DummyChannelsClient()
+class DummyScrapydClient:
+
+    def schedule(self, *args, **kwargs):
+        return 'dummy-job'
+
+    def job_status(self, *args, **kwargs):
+        return FINISHED
 
 
 @pytest.mark.celery(result_backend='redis://')
@@ -104,18 +115,20 @@ class TasksTestCase(TestCase):
         """ Test notebook script get """
         response = tasks.splash_notebook(
             notebook='bot',
-            execution_id=1
+            process_id=self.process.id,
         )
         print('response')
         # self.assertEqual(execution_result['process_id'], process.id)
 
     def test_scrapy_observer(self):
         """ Test observe scrapy job """
-        with mock.patch('channels.layers.get_channel_layer  ', mock_get_channel_layer):
-            response = tasks.scrapy_observer(
-                scrapy_job_id='bot',
-                process_id=self.process.id,
-                execution_id=self.execution.id,
-                rounds=2
-            )
-            self.assertEqual(response, None)
+        with mock.patch('channels.layers.get_channel_layer', DummyChannelsClient()):
+            with mock.patch('engine.tasks.ScrapyDaemonClientMixin.get_scrapy_daemon_client', DummyScrapydClient):
+                response = tasks.scrapy_observer(
+                    scrapy_job_id='bot',
+                    process_id=self.process.id,
+                    execution_id=self.execution.id,
+                    poll_time=1,
+                    rounds=2
+                )
+                self.assertEqual(response, None)
