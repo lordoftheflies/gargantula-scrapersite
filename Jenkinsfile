@@ -6,7 +6,7 @@ pipeline {
         PYTHON_MODULE_NAME = 'scrapersite'
         PYTHON_PATH = '/usr/bin/python3.6'
         VIRTUAL_ENVIRONMENT_NAME = 'env'
-        PYPI_EXTRA_INDEX_URL = https://pypi.cherubits.hu
+        PYPI_EXTRA_INDEX_URL = 'https://pypi.cherubits.hu'
         PYPI_REPOSITORY = 'local'
         DOTENV_PATH = ~/.gargantula
     }
