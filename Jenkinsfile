@@ -16,7 +16,7 @@ pipeline {
             steps {
                 slackSend channel: "#jenkins", message: "Build #${env.BUILD_NUMBER} Started - ${env.JOB_NAME} (<${env.BUILD_URL}|Open>)"
 
-                git(url: 'git@github.com:lordoftheflies/${REPOSITORY_NAME}.git', branch: 'master', changelog: true, credentialsId: 'credentials-github-lordoftheflies-ssh', poll: true)
+                git(url: "git@github.com:lordoftheflies/${REPOSITORY_NAME}.git", branch: 'master', changelog: true, credentialsId: 'credentials-github-lordoftheflies-ssh', poll: true)
             }
         }
 
