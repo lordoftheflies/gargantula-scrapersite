@@ -31,8 +31,8 @@ pipeline {
         stage('Setup dotenv') {
             steps {
                 fileOperations([
-                    fileCopyOperation(excludes: '', flattenFiles: true, includes: 'env.template', targetLocation: '~'),
-                    fileRenameOperation(source: '~/env.template', destination: "${DOTENV_PATH}")
+                    fileCopyOperation(excludes: '', flattenFiles:includes: 'env.template', targetLocation: "${HOME}"),
+                    fileRenameOperation(source: '~/env.template', destination: ${DOTENV_PATH})
                 ])
 
                 sh '''if [ ! -f "${DOTENV_PATH}" ]; then
