@@ -30,11 +30,17 @@ pipeline {
 
         stage('Setup dotenv') {
             steps {
-                fileOperations([
-                    fileDeleteOperation(includes: "${HOME}/.gargant*", excludes: ''),
-                    fileCopyOperation(excludes: '', flattenFiles: true, includes: 'env.template', targetLocation: "${HOME}"),
-                    fileRenameOperation(source: "${HOME}/env.template", destination: "${HOME}/.gargantula")
-                ])
+                script {
+                    try {
+                        fileOperations([
+                            fileCopyOperation(excludes: '', flattenFiles: true, includes: 'env.template', targetLocation: "${HOME}"),
+                            fileRenameOperation(source: "${HOME}/env.template", destination: "${HOME}/.gargantula")
+                        ])
+                    } catch(error) {
+                        echo "$error"
+                    }
+                }
+
 
                 sh '''if [ ! -f "${HOME}/.gargantula" ]; then
                     sed -i -- 's/DEVELOPMENT/STAGING/g' "${HOME}/.gargantula"
