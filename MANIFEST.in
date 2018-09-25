@@ -2,7 +2,6 @@ include LICENSE
 include README.rst
 include requirements.txt
 recursive-include requirements *
-include scrapy.cfg
 include manage.py
 recursive-include mdm/static *
 recursive-include mdm/templates *
