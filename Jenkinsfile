@@ -31,7 +31,7 @@ pipeline {
         stage('Setup dotenv') {
             steps {
                 fileOperations([
-                    fileDeleteOperation(includes: "${HOME}/.gargantula", excludes: ''),
+                    fileDeleteOperation(file: "${HOME}/.gargantula"),
                     fileCopyOperation(excludes: '', flattenFiles: true, includes: 'env.template', targetLocation: "${HOME}"),
                     fileRenameOperation(source: "${HOME}/env.template", destination: "${HOME}/.gargantula")
                 ])
