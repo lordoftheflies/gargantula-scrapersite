@@ -87,7 +87,7 @@ pipeline {
                 echo "Code Coverage"
                 sh  ''' . ./${VIRTUAL_ENVIRONMENT_NAME}/bin/activate
                         coverage run --source='.' manage.py test ${PYTHON_MODULE_NAME}
-                        python -m coverage xml -o ./test-reports/coverage.xml
+                        python -m coverage xml -i -o ./test-reports/coverage.xml
 
                     '''
                 echo "PEP8 style check"
