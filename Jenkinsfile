@@ -123,7 +123,7 @@ pipeline {
                 sh '''. ./${VIRTUAL_ENVIRONMENT_NAME}/bin/activate
                     BUMPED_VERSION=$(cat ${PYTHON_MODULE_NAME}/version.py | grep "__version__ = " | sed 's/__version__ =//' | tr -d "'")
                     echo "$BUMPED_VERSION"
-                    bumpversion --allow-dirty --message 'Jenkins Build {$BUILD_NUMBER} bump version of ${REPOSITORY_NAME}: {current_version} -> {new_version}' --commit --tag --tag-name 'v{new_version}' --current-version $BUMPED_VERSION patch ${PYTHON_MODULE_NAME}/version.py
+                    bumpversion --allow-dirty --message 'Jenkins Build {$BUILD_NUMBER} bump version of {$REPOSITORY_NAME}: {current_version} -> {new_version}' --commit --tag --tag-name 'v{new_version}' --current-version $BUMPED_VERSION patch ${PYTHON_MODULE_NAME}/version.py
                 deactivate'''
 
                 sh '''git push origin master'''
