@@ -32,7 +32,7 @@ pipeline {
             steps {
                 fileOperations([
                     fileCopyOperation(excludes: '', flattenFiles: true, includes: 'env.template', targetLocation: '~'),
-                    fileRenameOperation(excludes: '', flattenFiles: true, includes: '~/env.template', targetLocation: "${DOTENV_PATH}")
+                    fileRenameOperation(source: '~/env.template', destination: "${DOTENV_PATH}")
                 ])
 
                 sh '''if [ ! -f "${DOTENV_PATH}" ]; then
