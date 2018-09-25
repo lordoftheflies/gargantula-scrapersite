@@ -32,11 +32,11 @@ pipeline {
             steps {
                 fileOperations([
                     fileCopyOperation(excludes: '', flattenFiles: true, includes: 'env.template', targetLocation: '${HOME}'),
-                    fileRenameOperation(source: '~/env.template', destination: '${DOTENV_PATH}')
+                    fileRenameOperation(source: '${HOME}/env.template', destination: '${HOME}/.gargantula')
                 ])
 
-                sh '''if [ ! -f "${DOTENV_PATH}" ]; then
-                    sed -i -- 's/DEVELOPMENT/STAGING/g' "${DOTENV_PATH}"
+                sh '''if [ ! -f "${HOME}/.gargantula" ]; then
+                    sed -i -- 's/DEVELOPMENT/STAGING/g' "${HOME}/.gargantula"
                 fi'''
             }
         }
