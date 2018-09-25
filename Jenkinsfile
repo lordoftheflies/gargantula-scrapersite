@@ -29,13 +29,14 @@ pipeline {
         }
 
         stage('Setup dotenv') {
-
-
             steps {
-                fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: 'env.template', targetLocation: ${DOTENV_PATH})])
+                fileOperations([
+                    fileCopyOperation(excludes: '', flattenFiles: true, includes: 'env.template', targetLocation: '~'),
+                    fileRenameOperation(excludes: '', flattenFiles: true, includes: '~/env.template', targetLocation: "${DOTENV_PATH}")
+                ])
 
                 sh '''if [ ! -f "${DOTENV_PATH}" ]; then
-                    sed -i -- 's/DEVELOPMENT/STAGING/g' ${DOTENV_PATH}
+                    sed -i -- 's/DEVELOPMENT/STAGING/g' "${DOTENV_PATH}"
                 fi'''
             }
         }
